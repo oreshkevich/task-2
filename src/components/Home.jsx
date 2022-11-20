@@ -4,7 +4,7 @@ function Home() {
   const [calendar, setCalendar] = useState([]);
 
   useEffect(() => {
-    fetch(`https://82.202.204.94/tmp/test.php`, {
+    fetch(`http://82.202.204.94/tmp/test.php`, {
       method: 'GET',
       mode: 'cors',
       headers: {
