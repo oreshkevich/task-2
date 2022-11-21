@@ -1,26 +1,19 @@
 import React, { useState, useEffect } from 'react';
-
+import { getAllNotes } from '../Services/NoteService';
 function Home() {
-  const [calendar, setCalendar] = useState([]);
+  // const [calendar, setCalendar] = useState([]);
+
+  const [todos, setTodos] = useState([]);
 
   useEffect(() => {
-    fetch(`http://82.202.204.94/tmp/test.php`, {
-      method: 'GET',
-      mode: 'cors',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data);
-        // setCalendar(data.project);
-        // console.log(calendar);
-      })
-      .catch((err) => {
-        console.error(err);
-      });
+    fetchNotes();
   }, []);
+
+  async function fetchNotes() {
+    const notes = await getAllNotes();
+    setTodos(notes[0].chart);
+  }
+  console.log(todos);
 
   return (
     <>
